@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>Ray</title>
+<meta name="description" content="Ray builds software for the Mac, the web and Roblox.">
+<style>
+:root{
+  --bg:#ffffff; --ink:#0c1a13; --ink2:#3b4a42; --mut:#7c8a83; --rule:rgba(12,26,19,.12);
+  --g:#14915e; --g2:#2fc786;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Inter",system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--font);letter-spacing:-.008em;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-optical-sizing:auto}
+a{color:inherit}
+::selection{background:var(--g);color:#fff}
+:focus-visible{outline:2px solid var(--g);outline-offset:4px;border-radius:6px}
+.skip{position:fixed;left:16px;top:-60px;z-index:50;padding:10px 16px;border-radius:8px;background:var(--ink);color:#fff;text-decoration:none;transition:top .2s}
+.skip:focus{top:16px}
+
+/* ---------- sculpted layers (the one signature visual) ---------- */
+.stage{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.layer{position:absolute;will-change:transform,clip-path}
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.9) 34%,rgba(255,255,255,0) 58%)}
+
+main,header,footer{position:relative;z-index:3}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+/* ---------- header ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:20}
+.bar{display:flex;align-items:center;justify-content:space-between;height:72px}
+.mark{font-weight:650;font-size:1.05rem;letter-spacing:-.02em;text-decoration:none}
+.mark span{color:var(--g)}
+.links{display:flex;gap:4px;padding:4px;border-radius:999px;transition:background .4s,box-shadow .4s}
+header{transition:opacity .8s ease .9s,transform .9s var(--ease) .9s,background .4s,box-shadow .4s}
+header.scrolled{background:rgba(255,255,255,.72);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);box-shadow:0 1px 0 var(--rule)}
+.links a{font-size:.88rem;color:var(--ink2);text-decoration:none;padding:7px 14px;border-radius:999px;transition:color .2s,background .2s}
+.links a:hover{color:var(--ink);background:rgba(12,26,19,.05)}
+
+/* ---------- intro choreography ---------- */
+.ln{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+.ln>span{display:block;transform:translateY(105%);transition:transform 1.15s var(--ease)}
+.in .ln>span,.ln.in>span{transform:none}
+.fade{opacity:0;transform:translateY(12px);transition:opacity .9s ease,transform 1s var(--ease)}
+.in .fade{opacity:1;transform:none}
+header{opacity:0;transform:translateY(-10px)}
+body.ready header{opacity:1;transform:none}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 0 64px}
+h1{font-size:clamp(2.9rem,7.4vw,6.6rem);line-height:.98;letter-spacing:-.052em;font-weight:650;max-width:12.5ch}
+h1 em{font-style:normal;color:var(--g)}
+.meta{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 48px;margin-top:44px;padding-top:22px;border-top:1px solid var(--rule);max-width:620px;font-size:.88rem;color:var(--ink2)}
+.meta b{display:block;font-weight:500;color:var(--mut);font-size:.76rem;margin-bottom:2px}
+.cta-row{display:flex;align-items:center;gap:26px;margin-top:36px}
+
+/* one button, glass with real shine */
+.btn{position:relative;display:inline-flex;align-items:center;gap:10px;overflow:hidden;padding:14px 26px;border-radius:999px;color:#fff;text-decoration:none;font-size:.95rem;font-weight:550;
+  background:linear-gradient(180deg,#2fc786,#14915e);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -8px 14px -8px rgba(0,60,30,.35),0 12px 28px -14px rgba(20,145,94,.7);
+  transition:transform .5s var(--ease),box-shadow .4s}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);transform:translateX(-100%);transition:transform .9s var(--ease)}
+.btn:hover::after{transform:translateX(100%)}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:scale(.97);transition-duration:.1s}
+.btn svg{width:14px;height:14px;transition:transform .4s var(--ease)}
+.btn:hover svg{transform:translateX(3px)}
+.tlink{font-size:.95rem;color:var(--ink2);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .5s var(--ease),color .2s;padding-bottom:2px}
+.tlink:hover{color:var(--ink);background-size:100% 1px}
+
+/* ---------- sections ---------- */
+.sec{padding:150px 0 0}
+.head{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:baseline}
+.idx{font-size:.8rem;color:var(--mut);font-variant-numeric:tabular-nums}
+.idx i{font-style:normal;color:var(--g)}
+.lead{font-size:clamp(1.6rem,3vw,2.5rem);line-height:1.2;letter-spacing:-.035em;font-weight:550;max-width:24ch}
+.body{margin-top:28px;max-width:56ch;color:var(--ink2);font-size:1.06rem}
+.body+.body{margin-top:16px}
+
+/* numbered list */
+.list{margin-top:56px;border-top:1px solid var(--rule)}
+.row{position:relative;display:grid;grid-template-columns:200px 1fr 1fr;gap:32px;padding:28px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.row::before{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--g);transform:scaleX(0);transform-origin:0 50%;transition:transform .8s var(--ease)}
+.row:hover::before{transform:scaleX(1)}
+.row .n{font-size:.8rem;color:var(--mut);font-variant-numeric:tabular-nums}
+.row h3{font-size:clamp(1.3rem,2.2vw,1.75rem);font-weight:550;letter-spacing:-.03em;line-height:1.2;transition:transform .6s var(--ease)}
+.row:hover h3{transform:translateX(6px)}
+.row p{color:var(--ink2);font-size:.98rem}
+.row small{display:block;margin-top:6px;color:var(--mut);font-size:.84rem}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* contact */
+.contact{padding:200px 0 0}
+.big{font-size:clamp(3.2rem,10vw,9rem);line-height:.92;letter-spacing:-.06em;font-weight:650}
+.big em{font-style:normal;color:var(--g)}
+.mail{display:inline-block;margin-top:34px;font-size:clamp(1.1rem,2.2vw,1.6rem);letter-spacing:-.02em;text-decoration:none;color:var(--ink);background:linear-gradient(var(--g),var(--g)) 0 100%/100% 2px no-repeat;padding-bottom:4px;transition:background-size .6s var(--ease)}
+.mail:hover{background-size:0 2px;background-position:100% 100%}
+footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:120px 0 40px;color:var(--mut);font-size:.82rem}
+
+@media(max-width:800px){
+  .wrap{padding:0 20px}
+  .veil{background:linear-gradient(0deg,#fff 0%,rgba(255,255,255,.92) 48%,rgba(255,255,255,.2) 100%)}
+  .hero{padding-bottom:48px}
+  .meta{grid-template-columns:1fr 1fr;gap:14px 24px}
+  .head,.row{grid-template-columns:1fr;gap:10px}
+  .head>div:empty{display:none}
+  .sec{padding-top:110px}
+  .contact{padding-top:140px}
+  .links a{padding:7px 10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .ln>span,.fade,.rv,header{transform:none!important;opacity:1!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#about">Skip to content</a>
+<div class="stage" id="stage" aria-hidden="true"></div>
+<div class="veil" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="wrap bar">
+    <a class="mark" href="#top">Ray<span>.</span></a>
+    <nav class="links" aria-label="Sections"><a href="#about">About</a><a href="#practice">Practice</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap" id="hero" aria-label="Intro">
+    <h1>
+      <span class="ln"><span>Ray builds software</span></span>
+      <span class="ln"><span>for the Mac, the web</span></span>
+      <span class="ln"><span>and <em>Roblox.</em></span></span>
+    </h1>
+    <div class="meta fade" style="transition-delay:1.05s">
+      <div><b>Role</b>Developer and designer</div>
+      <div><b>Platforms</b>macOS · Web · Roblox</div>
+      <div><b>Languages</b>Swift, Rust, TypeScript, Luau</div>
+    </div>
+    <div class="cta-row fade" style="transition-delay:1.2s">
+      <a class="btn" href="#contact">Get in touch <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></a>
+      <a class="tlink" href="#about">About me</a>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="about" aria-labelledby="about-h">
+    <div class="head">
+      <p class="idx rv"><i>01</i> — About</p>
+      <h2 class="lead rv" id="about-h">I design and build the whole thing, from the first sketch to a working build.</h2>
+    </div>
+    <div class="head">
+      <div></div>
+      <div>
+        <p class="body rv">I make native Mac apps in Swift and SwiftUI, desktop and web tools in Rust and TypeScript, and games on Roblox in Luau.</p>
+        <p class="body rv">Doing both the design and the engineering means the details don't get lost in a handoff: how an interface responds, how it moves, and what happens at the edges.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="practice" aria-labelledby="pr-h">
+    <div class="head">
+      <p class="idx rv"><i>02</i> — Practice</p>
+      <h2 class="lead rv" id="pr-h">What I work on.</h2>
+    </div>
+    <div class="list">
+      <div class="row rv"><span class="n">2.1</span><h3>Mac apps</h3><p>Native utilities and launchers that feel at home on macOS.<small>Swift · SwiftUI</small></p></div>
+      <div class="row rv"><span class="n">2.2</span><h3>Desktop &amp; web</h3><p>Cross-platform tools and websites, with motion and 3D where it helps.<small>Rust · Tauri · TypeScript · React · Three.js</small></p></div>
+      <div class="row rv"><span class="n">2.3</span><h3>Games</h3><p>Worlds and game systems on Roblox.<small>Luau · Rojo</small></p></div>
+      <div class="row rv"><span class="n">2.4</span><h3>Interface &amp; motion</h3><p>Layout, typography and interaction, prototyped until it feels right in the hand.<small>Design · Prototyping</small></p></div>
+    </div>
+  </section>
+
+  <section class="contact wrap" id="contact" aria-labelledby="ct-h">
+    <p class="idx rv" style="margin-bottom:28px"><i>03</i> — Contact</p>
+    <h2 class="big" id="ct-h">
+      <span class="ln"><span>Say</span></span>
+      <span class="ln"><span><em>hello.</em></span></span>
+    </h2>
+    <!-- TODO: replace placeholder contact -->
+    <a class="mail rv" href="mailto:you@example.com">you@example.com</a>
+  </section>
+
+  <footer class="wrap"><span>© 2026 Ray</span><span>Built by hand in one HTML file.</span></footer>
+</main>
+
+<script>
+(()=>{
+'use strict';
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const RM=matchMedia('(prefers-reduced-motion: reduce)');
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),lerp=(a,b,t)=>a+(b-a)*t;
+let raf=0,last=0;
+
+class Spring{
+  constructor(x=0,d=1,r=.4){this.x=x;this.t=x;this.v=0;this.cfg(d,r)}
+  cfg(d,r){this.k=(2*Math.PI/r)**2;this.c=4*Math.PI*d/r;return this}
+  step(dt){if(RM.matches){this.x=this.t;this.v=0;return}
+    const n=Math.max(1,Math.ceil(dt/.008)),h=dt/n;
+    for(let i=0;i<n;i++){const a=this.k*(this.t-this.x)-this.c*this.v;this.v+=a*h;this.x+=this.v*h}
+    if(Math.abs(this.t-this.x)<.0005&&Math.abs(this.v)<.005){this.x=this.t;this.v=0}}
+  get rest(){return this.x===this.t&&this.v===0}
+}
+
+/* ================= sculpted layers =================
+   Painted once into their own canvases; afterwards only moved and unmasked. */
+const TONES={
+  g:{body:['#7beab0','#2cc07f','#0e7a4c'],band:'rgba(255,255,255,.5)',rim:'rgba(255,255,255,',glow:'rgba(255,255,255,.7)',line:'rgba(255,255,255,',lip:'rgba(4,60,34,.22)',fall:'rgba(4,60,34,.3)',shadow:'rgba(10,90,55,.26)'},
+  m:{body:['#e3f8ec','#b6ead0','#6fc39a'],band:'rgba(255,255,255,.7)',rim:'rgba(19,150,96,',glow:'rgba(47,199,134,.45)',line:'rgba(19,150,96,',lip:'rgba(20,90,60,.1)',fall:'rgba(20,90,60,.16)',shadow:'rgba(20,80,52,.18)'},
+  w:{body:['#ffffff','#f2f7f4','#cfdcd5'],band:'rgba(255,255,255,.9)',rim:'rgba(31,180,116,',glow:'rgba(47,199,134,.4)',line:'rgba(31,180,116,',lip:'rgba(20,80,55,.08)',fall:'rgba(30,80,55,.14)',shadow:'rgba(20,70,45,.16)'}
+};
+const DESK=[
+  {x:.34,y:.97,s:.6,t:'m',d:.15},
+  {x:.49,y:.76,s:.74,t:'g',d:.3},
+  {x:.61,y:.55,s:.86,t:'w',d:.45},
+  {x:.73,y:.37,s:.98,t:'g',d:.6},
+  {x:.85,y:.21,s:1.1,t:'m',d:.75},
+  {x:1.0,y:.08,s:1.26,t:'w',d:.95}
+];
+const MOB=[
+  {x:.3,y:.36,s:.56,t:'g',d:.2},
+  {x:.54,y:.24,s:.7,t:'w',d:.45},
+  {x:.78,y:.12,s:.84,t:'m',d:.7},
+  {x:1.02,y:.02,s:.98,t:'g',d:.95}
+];
+const stage=$('#stage');let layers=[],W=0,H=0;
+function paint(def,i){
+  const mob=W<800,U=Math.min(W,H*1.5)*(mob?.62:.34)*def.s;
+  const peakX=def.x*W,top=def.y*H,lean=U*.62,round=U*.72;
+  const baseX=peakX-lean,bot=H*1.3+80,pad=90;
+  const x0=Math.floor(baseX-lean*.2-pad),y0=Math.floor(top-round*.3-pad),x1=Math.ceil(peakX+round*3.2),y1=bot+20;
+  const DPR=Math.min(devicePixelRatio||1,1.5);
+  const cv=document.createElement('canvas');cv.className='layer';
+  cv.width=Math.max(1,Math.round((x1-x0)*DPR));cv.height=Math.max(1,Math.round((y1-y0)*DPR));
+  Object.assign(cv.style,{left:x0+'px',top:y0+'px',width:(x1-x0)+'px',height:(y1-y0)+'px'});
+  const c=cv.getContext('2d');c.setTransform(DPR,0,0,DPR,-x0*DPR,-y0*DPR);
+  const path=(close=true)=>{c.beginPath();c.moveTo(baseX,bot);
+    c.bezierCurveTo(baseX-lean*.12,lerp(bot,top,.55),peakX-round*1.05,top+round*.06,peakX,top-round*.02);
+    c.bezierCurveTo(peakX+round*1.1,top-round*.12,peakX+round*2.4,top-round*.02,x1+40,top+round*.7);
+    if(close){c.lineTo(x1+40,bot);c.closePath()}};
+  const T=TONES[def.t];
+  c.save();c.filter='blur(30px)';c.translate(-30,16);path();c.fillStyle=T.shadow;c.fill();c.restore();
+  c.save();path();c.clip();
+  const body=c.createLinearGradient(baseX-lean*.2,0,peakX+round*1.8,0);
+  body.addColorStop(0,T.body[0]);body.addColorStop(.3,T.body[1]);body.addColorStop(1,T.body[2]);
+  c.fillStyle=body;c.fillRect(x0,y0,x1-x0,y1-y0);
+  const band=c.createLinearGradient(baseX-lean*.3,bot,peakX,top);
+  band.addColorStop(0,T.band);band.addColorStop(.5,T.band.replace(/[\d.]+\)$/,m=>(parseFloat(m)*.4)+')'));band.addColorStop(1,'rgba(255,255,255,0)');
+  c.fillStyle=band;c.beginPath();c.moveTo(baseX-lean*.2,bot);
+  c.bezierCurveTo(baseX,lerp(bot,top,.5),peakX-round,top+round*.2,peakX+round*.45,top+round*.55);
+  c.lineTo(peakX+round*.15,bot);c.closePath();c.fill();
+  const fall=c.createLinearGradient(0,top,0,bot);fall.addColorStop(0,'rgba(0,0,0,0)');fall.addColorStop(1,T.fall);
+  c.fillStyle=fall;c.fillRect(x0,y0,x1-x0,y1-y0);
+  c.restore();
+  c.save();c.translate(8,5);path(false);c.strokeStyle=T.lip;c.lineWidth=10;c.stroke();c.restore();
+  [[16,10,.4,1.2],[30,19,.2,1]].forEach(([dx,dy,a,w])=>{c.save();c.translate(dx,dy);path(false);c.strokeStyle=T.line+a+')';c.lineWidth=w;c.stroke();c.restore()});
+  const rim=c.createLinearGradient(baseX,bot,peakX+round*2,top);
+  rim.addColorStop(0,T.rim+'.2)');rim.addColorStop(.4,T.rim+'.75)');rim.addColorStop(.65,T.rim+'1)');rim.addColorStop(1,T.rim+'.4)');
+  c.save();path(false);c.strokeStyle=rim;c.lineWidth=2.2;c.shadowColor=T.glow;c.shadowBlur=10;c.stroke();c.restore();
+  stage.appendChild(cv);
+  return{el:cv,d:def.d,px:new Spring(0,1,1.2),py:new Spring(0,1,1.2),rise:new Spring(RM.matches?0:1,.88,1.25),i};
+}
+function buildLayers(first){
+  W=innerWidth;H=innerHeight;stage.innerHTML='';
+  layers=(W<800?MOB:DESK).map(paint);
+  layers.forEach((l,i)=>{
+    if(!first||RM.matches){l.rise.x=l.rise.t=0;return}
+    // intro: each layer sweeps up out of its mask, back to front
+    setTimeout(()=>{l.rise.t=0;wake()},120+i*110);
+  });
+  wake();
+}
+
+/* ================= reveals ================= */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.2,rootMargin:'0px 0px -8% 0px'});
+$$('.rv').forEach(el=>{const sib=[...el.parentElement.children].filter(x=>x.classList.contains('rv')).indexOf(el);el.style.transitionDelay=Math.max(0,sib)*90+'ms';io.observe(el)});
+$$('.big .ln').forEach((ln,i)=>{ln.firstElementChild.style.transitionDelay=i*120+'ms';io.observe(ln)});
+$$('#hero .ln>span').forEach((s,i)=>s.style.transitionDelay=(.45+i*.1)+'s');
+requestAnimationFrame(()=>requestAnimationFrame(()=>{$('#hero').classList.add('in');document.body.classList.add('ready')}));
+
+/* header turns to glass once you leave the top */
+const hdr=$('#hdr');
+const onScroll=()=>{hdr.classList.toggle('scrolled',scrollY>40);wake()};
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.getElementById(a.hash.slice(1));if(!t)return;e.preventDefault();
+  scrollTo({top:a.hash==='#top'?0:t.getBoundingClientRect().top+scrollY-80,behavior:RM.matches?'auto':'smooth'})}));
+
+/* pointer parallax for the layers */
+addEventListener('pointermove',e=>{
+  if(e.pointerType!=='mouse')return;
+  const nx=e.clientX/innerWidth-.5,ny=e.clientY/innerHeight-.5;
+  layers.forEach(l=>{l.px.t=-nx*34*l.d;l.py.t=-ny*20*l.d});wake();
+},{passive:true});
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(Math.abs(innerWidth-W)>1||Math.abs(innerHeight-H)>120)buildLayers(false)},180)});
+
+/* ================= frame loop: only while something moves ================= */
+function wake(){if(!raf){last=performance.now();raf=requestAnimationFrame(frame)}}
+function frame(now){
+  raf=0;const dt=Math.min(.034,(now-last)/1000)||.016;last=now;const sy=scrollY;let busy=false;
+  // the layers are the intro; once you're reading, they recede
+  stage.style.opacity=1-.84*clamp(sy/(H*.85));
+  layers.forEach(l=>{
+    l.px.step(dt);l.py.step(dt);l.rise.step(dt);if(!l.px.rest||!l.py.rest||!l.rise.rest)busy=true;
+    const r=l.rise.x;
+    l.el.style.transform=`translate3d(${l.px.x}px,${l.py.x+r*H*.28-Math.min(sy,H)*.16*(.4+l.d)}px,0)`;
+    l.el.style.clipPath=r>.001?`inset(${clamp(r)*100}% 0 0 0)`:'';
+  });
+  if(busy)raf=requestAnimationFrame(frame);
+}
+buildLayers(true);
+})();
+</script>
+</body>
+</html>
