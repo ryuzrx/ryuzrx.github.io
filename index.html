@@ -99,12 +99,7 @@ body:not(.go) .hero{transform:scale(.96);border-radius:40px}
 .ring::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px;border-radius:50%;background:var(--ink)}
 .ring span{transform:translateY(16px)}
 
-/* ---------- stats ---------- */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);margin:80px auto 0;max-width:1400px;padding:0 clamp(18px,3vw,40px)}
-.stat{border-left:1px solid rgba(242,237,224,.14);padding:0 16px 0 20px}
-.stat .v{font-family:var(--disp);font-variation-settings:"opsz" 96;font-weight:700;font-size:clamp(3rem,7vw,6.4rem);line-height:.9;letter-spacing:-.02em;display:inline-block;transform:scaleX(.82);transform-origin:0 50%;white-space:nowrap}
-.stat .v small{font-family:var(--mono);font-size:.16em;font-weight:500;letter-spacing:.04em;margin-left:6px}
-.stat p{margin-top:14px;color:rgba(242,237,224,.6);font-size:.9rem;max-width:24ch}
+/* ---------- marquee ---------- */
 .marquee{margin:80px 0 70px;overflow:hidden;border-top:1px solid rgba(242,237,224,.12);border-bottom:1px solid rgba(242,237,224,.12);padding:16px 0}
 .track{display:flex;width:max-content;animation:mq 40s linear infinite}
 .marquee:hover .track{animation-play-state:paused}
@@ -115,45 +110,6 @@ body:not(.go) .hero{transform:scale(.96);border-radius:40px}
 /* ---------- section heads ---------- */
 .sec-head{display:flex;justify-content:space-between;align-items:flex-start;padding-top:22px}
 .sec-title{padding-top:clamp(28px,5vw,60px)}
-
-/* ---------- work ---------- */
-.work{background:var(--cream);padding-bottom:clamp(18px,3vw,40px)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,18px);margin-top:clamp(32px,5vw,64px);perspective:1400px}
-.card{--h:var(--matcha);position:relative;display:flex;flex-direction:column;text-align:left;border-radius:16px;background:var(--h);color:var(--ink);padding:14px;
-  transition:transform .7s var(--ease),opacity .9s ease;will-change:transform;cursor:pointer;width:100%}
-.card[data-k="rpbrc"]{--h:var(--sakura)}.card[data-k="lumora"]{--h:var(--teal)}.card[data-k="roblox"]{--h:var(--matcha)}
-.card-top{display:flex;justify-content:space-between;align-items:center;padding:4px 4px 12px}
-.card-vis{position:relative;aspect-ratio:4/3.2;border-radius:10px;overflow:hidden;background:var(--black)}
-.card-vis>*{position:absolute}
-.card h3{font-family:var(--disp);font-variation-settings:"opsz" 96;font-weight:760;text-transform:uppercase;font-size:clamp(2.4rem,3.7vw,3.9rem);line-height:.85;margin:22px 4px 0;transform:scaleX(var(--sx));transform-origin:0 50%;white-space:nowrap}
-.card p{margin:12px 4px 0;color:var(--ink2);font-size:.95rem;line-height:1.45}
-.card-foot{display:flex;justify-content:space-between;align-items:center;margin:auto 4px 2px;padding-top:20px}
-.card-foot .lbl{color:var(--ink2)}
-.arrow{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--black);color:var(--h);transition:transform .5s var(--spring)}
-.arrow svg{width:14px;height:14px}
-.card:hover .arrow{transform:rotate(-45deg) scale(1.08)}
-/* card visuals */
-.v-win{inset:12% 8% auto;height:76%;border-radius:10px;background:#141414;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);overflow:hidden;transition:transform .8s var(--ease)}
-.card:hover .v-win,.card:hover .l-panel{transform:translateY(-6px)}
-.v-tb{display:flex;align-items:center;gap:5px;padding:9px 11px;border-bottom:1px solid rgba(255,255,255,.07);color:rgba(242,237,224,.5)}
-.v-tb i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.16)}
-.v-tb .lbl{margin-left:auto;font-size:9px}
-.v-chart{position:absolute;left:0;right:0;bottom:0;top:30px}
-.v-chart svg{width:100%;height:100%}
-.v-lbl{position:absolute;left:12px;font-size:9px;color:rgba(242,237,224,.5)}
-.v-lbl.a{top:40px}.v-lbl.b{bottom:12px;color:var(--sakura)}
-.jit{stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset 2.2s var(--ease)}
-.card.in .jit{stroke-dashoffset:0}
-.l-panel{inset:13% 12% auto;padding:14px;border-radius:12px;background:#151515;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09);display:grid;gap:10px;color:rgba(242,237,224,.75);font-size:.74rem;transition:transform .8s var(--ease)}
-.l-row{display:flex;align-items:center;justify-content:space-between}
-.tg{width:28px;height:16px;border-radius:999px;background:rgba(255,255,255,.14);position:relative;transition:background .4s}
-.tg::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--cream);transition:transform .5s var(--spring)}
-.tg.on{background:var(--teal)}.tg.on::after{transform:translateX(12px)}
-.l-pass{display:flex;align-items:center;gap:8px;padding-top:10px;border-top:1px solid rgba(255,255,255,.08);color:var(--teal);font-size:9px}
-.l-pass i{width:6px;height:6px;border-radius:50%;background:var(--teal)}
-.r-scene{inset:0;display:grid;place-items:center}
-.r-scene svg{width:74%;height:auto;overflow:visible;transition:transform .9s var(--ease)}
-.card:hover .r-scene svg{transform:translateY(-8px) scale(1.04)}
 
 /* ---------- about ---------- */
 .about{background:var(--sakura);padding-bottom:clamp(40px,6vw,80px)}
@@ -199,36 +155,12 @@ body:not(.go) .hero{transform:scale(.96);border-radius:40px}
 .foot{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;padding-bottom:20px;gap:12px}
 .foot .r{text-align:right}
 
-/* ---------- sheet ---------- */
+/* ---------- dialogs ---------- */
 dialog:not([open]){display:none!important}
 dialog{border:0;padding:0;background:transparent;color:inherit;max-width:none;max-height:none}
-dialog:focus-visible,.sheet-panel:focus-visible{outline:none}
+dialog:focus-visible{outline:none}
 dialog::backdrop{background:rgba(5,5,5,.72);opacity:0;transition:opacity .35s}
 dialog[open].show::backdrop{opacity:1}
-.sheet{position:fixed;inset:0;width:100%;height:100%;display:grid;place-items:center;padding:20px}
-.sheet-panel{--h:var(--matcha);position:relative;width:min(900px,100%);max-height:min(90vh,920px);overflow:auto;border-radius:20px;background:var(--cream);color:var(--ink);scrollbar-width:thin}
-.sh-band{background:var(--h);padding:22px 26px 26px;display:flex;flex-direction:column;gap:clamp(24px,5vw,50px)}
-.sh-band .top{display:flex;justify-content:space-between;align-items:center}
-.sh-band h3{font-family:var(--disp);font-variation-settings:"opsz" 96;font-weight:760;text-transform:uppercase;font-size:clamp(3.6rem,10vw,8rem);line-height:.82;transform:scaleX(var(--sx));transform-origin:0 50%;white-space:nowrap}
-.x{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:var(--black);color:var(--cream);transition:transform .4s var(--spring)}
-.x:hover{transform:scale(1.05)}
-.sh-body{padding:26px}
-.sh-lead{font-size:1.15rem;max-width:58ch}
-.sh-grid{display:grid;grid-template-columns:repeat(3,1fr);margin:28px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.sh-grid div{padding:18px 18px 18px 0}
-.sh-grid div+div{padding-left:18px;border-left:1px solid var(--rule)}
-.sh-grid b{display:block;font-family:var(--disp);font-variation-settings:"opsz" 96;font-weight:700;font-size:2.4rem;line-height:1;transform:scaleX(.85);transform-origin:0 50%;white-space:nowrap}
-.sh-grid span{display:block;margin-top:8px;color:var(--ink2);font-size:.85rem}
-.sh-sec{margin-top:26px}
-.sh-sec h4{margin-bottom:12px;color:var(--ink2);font-weight:500}
-.sh-sec ul{list-style:none;display:grid;gap:10px}
-.sh-sec li{position:relative;padding-left:20px;color:var(--ink2)}
-.sh-sec li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--ink)}
-.sh-sec li b{color:var(--ink);font-weight:600}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tag{padding:6px 10px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--rule)}
-.sh-note{margin-top:24px;padding:14px 16px;border-radius:12px;background:rgba(11,11,11,.05);color:var(--ink2);font-size:.9rem}
-
 /* ---------- command menu ---------- */
 .cmdk{position:fixed;inset:0;width:100%;height:100%;display:flex;justify-content:center;align-items:flex-start;padding:14vh 16px 16px}
 .cmdk-panel{width:min(560px,100%);border-radius:18px;overflow:hidden;background:var(--black);color:var(--cream);box-shadow:inset 0 0 0 1px rgba(242,237,224,.14),0 40px 100px -20px rgba(0,0,0,.9);animation:pop .45s var(--spring)}
@@ -246,13 +178,9 @@ dialog[open].show::backdrop{opacity:1}
 
 /* ---------- responsive ---------- */
 @media(max-width:980px){
-  .cards{grid-template-columns:1fr 1fr}
-  .cards .card:first-child{grid-column:1/-1}
-  .cards .card:first-child .card-vis{aspect-ratio:16/8}
   .row{grid-template-columns:50px minmax(0,1fr);gap:6px 16px}
   .row h3{font-size:clamp(2.4rem,9vw,4.6rem)}
   .row p,.row .st{grid-column:2;text-align:left}
-  .stats{grid-template-columns:1fr 1fr;gap:40px 0}
 }
 @media(max-width:720px){
   .panel{margin:6px;border-radius:16px}
@@ -265,16 +193,9 @@ dialog[open].show::backdrop{opacity:1}
   .sec-head span+span{display:none}
   .float.l{display:none}
   .float{top:12px}.float.r{right:12px}
-  .cards{grid-template-columns:1fr}
-  .cards .card:first-child .card-vis{aspect-ratio:4/3.2}
   .about-grid{grid-template-columns:1fr}
-  .sh-grid{grid-template-columns:1fr}
-  .sh-grid div+div{padding-left:0;border-left:0;border-top:1px solid var(--rule)}
-  .sheet{padding:0;align-items:end}
-  .sheet-panel{border-radius:18px 18px 0 0;max-height:92vh}
   .foot{grid-template-columns:1fr 1fr}.foot .mid{display:none}
   .marquee{margin:60px 0 50px}
-  .stats{margin-top:60px}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
@@ -285,7 +206,7 @@ dialog[open].show::backdrop{opacity:1}
 </style>
 </head>
 <body>
-<a class="skip" href="#work">Skip to content</a>
+<a class="skip" href="#about">Skip to content</a>
 
 <div class="intro" id="intro" aria-hidden="true">
   <div class="disp fit c"><span class="ln"><span>Ray</span></span></div>
@@ -300,7 +221,7 @@ dialog[open].show::backdrop{opacity:1}
 <main id="top">
   <section class="panel hero" id="hero" aria-label="Intro">
     <div class="bar in-pad lbl">
-      <nav aria-label="Sections"><a href="#work">Work</a><a href="#about">About</a><a href="#practice">Practice</a><a href="#contact">Contact</a></nav>
+      <nav aria-label="Sections"><a href="#about">About</a><a href="#practice">Practice</a><a href="#contact">Contact</a></nav>
       <span class="mid">Ray / Software</span>
       <div class="r"><button class="cmd-open" aria-label="Open command menu">[ Menu <span class="kh">⌘K</span> ]</button><span>[ 001 ]</span></div>
     </div>
@@ -320,83 +241,12 @@ dialog[open].show::backdrop{opacity:1}
   </section>
   <div class="ring lbl" id="ring" aria-hidden="true"><span id="ringTxt">Hold and drag</span></div>
 
-  <section aria-label="By the numbers">
-    <div class="stats">
-      <div class="stat rv"><div class="v"><span data-count="32">0</span></div><p>projects across macOS, Windows, web, Minecraft and Roblox</p></div>
-      <div class="stat rv"><div class="v"><span data-count="156">0</span></div><p>passing tests in Lumora Tweaks, the macOS tuning app</p></div>
-      <div class="stat rv"><div class="v">&lt;<span data-count="0.011" data-dec="3">0</span><small>MS</small></div><p>worst-case input timing error in rpbrc, under full CPU load</p></div>
-      <div class="stat rv"><div class="v"><span data-count="2">0</span><small>ARCH</small></div><p>universal builds, Apple silicon and Intel, from one source tree</p></div>
-    </div>
+  <section aria-label="Tools">
     <div class="marquee lbl" aria-hidden="true"><div class="track" id="track"></div></div>
   </section>
 
-  <section class="panel work in-pad" id="work" aria-labelledby="work-h">
-    <div class="sec-head lbl"><span>[ 01 ] Selected work</span><span>Open a card for the details</span></div>
-    <h2 class="disp fit l sec-title" id="work-h"><span class="ln"><span>Selected work</span></span></h2>
-    <div class="cards">
-      <button class="card rv" data-k="rpbrc" aria-haspopup="dialog">
-        <div class="card-top lbl"><span>[ 01 ] macOS</span><span>2026</span></div>
-        <div class="card-vis" aria-hidden="true">
-          <div class="v-win">
-            <div class="v-tb"><i></i><i></i><i></i><span class="lbl">timing engine</span></div>
-            <div class="v-chart">
-              <svg viewBox="0 0 300 150" preserveAspectRatio="none">
-                <g stroke="rgba(255,255,255,.06)"><path d="M0 40H300M0 80H300M0 120H300"/></g>
-                <polyline class="jit" pathLength="100" fill="none" stroke="rgba(242,237,224,.4)" stroke-width="1.2" points="0,70 12,30 22,88 34,40 46,96 58,22 70,78 82,46 94,100 106,34 118,84 130,28 142,92 154,50 166,74 178,20 190,90 202,44 214,82 226,36 238,98 250,52 262,30 274,86 286,42 300,70"/>
-                <polyline class="jit" pathLength="100" fill="none" stroke="#f5a3b5" stroke-width="2.4" points="0,108 30,107.5 60,108.4 90,107.8 120,108.2 150,107.6 180,108.3 210,107.9 240,108.1 270,107.7 300,108" style="transition-delay:.4s"/>
-              </svg>
-            </div>
-            <span class="v-lbl a lbl">before · 0.89 ms</span><span class="v-lbl b lbl">real-time thread · &lt;0.011 ms</span>
-          </div>
-        </div>
-        <h3>rpbrc</h3>
-        <p>A native macOS companion for Roblox players: a real-time input engine, instant replay clips and a video editor.</p>
-        <div class="card-foot"><span class="lbl">Swift · C++ · ScreenCaptureKit</span><span class="arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></div>
-      </button>
-
-      <button class="card rv" data-k="lumora" aria-haspopup="dialog">
-        <div class="card-top lbl"><span>[ 02 ] Desktop · Web</span><span>Suite</span></div>
-        <div class="card-vis" aria-hidden="true">
-          <div class="l-panel">
-            <div class="l-row"><span>Reduce motion lag</span><span class="tg on"></span></div>
-            <div class="l-row"><span>Latency lab</span><span class="tg" data-flip></span></div>
-            <div class="l-row"><span>Launch on login</span><span class="tg on" data-flip></span></div>
-            <div class="l-row"><span>Fabric 1.21.1</span><span class="tg on"></span></div>
-            <div class="l-pass lbl"><i></i>156 tests passed</div>
-          </div>
-        </div>
-        <h3>Lumora</h3>
-        <p>A family of apps: a Mac tuning tool, a launcher, a Rust Minecraft client and the web storefront behind them.</p>
-        <div class="card-foot"><span class="lbl">Swift · Rust · React</span><span class="arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></div>
-      </button>
-
-      <button class="card rv" data-k="roblox" aria-haspopup="dialog">
-        <div class="card-top lbl"><span>[ 03 ] Roblox</span><span>Games</span></div>
-        <div class="card-vis" aria-hidden="true">
-          <div class="r-scene">
-            <svg viewBox="0 0 200 170">
-              <defs>
-                <linearGradient id="rt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef7b8"/><stop offset="1" stop-color="#c4de5a"/></linearGradient>
-                <linearGradient id="rl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a3c043"/><stop offset="1" stop-color="#4b6418"/></linearGradient>
-                <linearGradient id="rr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6f8e26"/><stop offset="1" stop-color="#22300a"/></linearGradient>
-              </defs>
-              <g id="cube"><path d="M0 -12 L20 -2 L0 8 L-20 -2Z" fill="url(#rt)"/><path d="M-20 -2 L0 8 L0 30 L-20 20Z" fill="url(#rl)"/><path d="M20 -2 L0 8 L0 30 L20 20Z" fill="url(#rr)"/></g>
-              <use href="#cube" x="60" y="110"/><use href="#cube" x="100" y="130"/><use href="#cube" x="140" y="110"/>
-              <use href="#cube" x="80" y="100"/><use href="#cube" x="120" y="100"/><use href="#cube" x="100" y="90"/>
-              <use href="#cube" x="100" y="68"/><use href="#cube" x="80" y="78"/><use href="#cube" x="120" y="78"/>
-              <use href="#cube" x="100" y="46"/><use href="#cube" x="100" y="24"/>
-            </svg>
-          </div>
-        </div>
-        <h3>Roblox</h3>
-        <p>Games and tooling in Luau: Cinderfall, Troll Titans, BloxBot's place generators and the Ropilot Studio plugin.</p>
-        <div class="card-foot"><span class="lbl">Luau · Rojo · Python</span><span class="arrow"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 7h10M8 3l4 4-4 4"/></svg></span></div>
-      </button>
-    </div>
-  </section>
-
   <section class="panel about in-pad" id="about" aria-labelledby="about-h">
-    <div class="sec-head lbl"><span>[ 02 ] About</span><span>Ray</span></div>
+    <div class="sec-head lbl"><span>[ 01 ] About</span><span>Ray</span></div>
     <h2 class="statement" id="about-h" data-words>I care about the part most people never notice: how an interface <em>responds,</em> how it moves, and what happens at the edges.</h2>
     <div class="about-grid">
       <div>
@@ -412,7 +262,7 @@ dialog[open].show::backdrop{opacity:1}
   </section>
 
   <section class="practice" id="practice" aria-labelledby="pr-h">
-    <div class="sec-head lbl"><span id="pr-h">[ 03 ] Practice</span><span>What I work on</span></div>
+    <div class="sec-head lbl"><span id="pr-h">[ 02 ] Practice</span><span>What I work on</span></div>
     <div class="rows">
       <div class="row rv" style="--c:var(--sakura)"><span class="lbl">3.1</span><h3>Mac apps</h3><p>Native utilities and launchers that feel at home on macOS, down to signing and universal builds.</p><span class="st lbl">Swift · SwiftUI · C++</span></div>
       <div class="row rv" style="--c:var(--teal)"><span class="lbl">3.2</span><h3>Desktop &amp; web</h3><p>Cross-platform tools and websites, with motion and 3D where it helps.</p><span class="st lbl">Rust · Tauri · React</span></div>
@@ -422,7 +272,7 @@ dialog[open].show::backdrop{opacity:1}
   </section>
 
   <section class="panel contact" id="contact" aria-labelledby="ct-h">
-    <div class="bar in-pad lbl" style="grid-template-columns:1fr 1fr"><span>[ 04 ] Contact</span><span style="text-align:right">Open to roles &amp; collaborations</span></div>
+    <div class="bar in-pad lbl" style="grid-template-columns:1fr 1fr"><span>[ 03 ] Contact</span><span style="text-align:right">Open to roles &amp; collaborations</span></div>
     <div class="mid">
       <h2 class="disp fit c" id="ct-h"><span class="ln"><span>Let's build</span></span><span class="ln"><span>something</span></span></h2>
       <p class="rv">Open to internships, roles and interesting collaborations. The fastest way to reach me is GitHub.</p>
@@ -437,16 +287,6 @@ dialog[open].show::backdrop{opacity:1}
     </footer>
   </section>
 </main>
-
-<dialog id="sheet" class="sheet" aria-labelledby="shTitle">
-  <div class="sheet-panel" id="sheetPanel">
-    <div class="sh-band">
-      <div class="top lbl"><span id="shKick"></span><button class="x lbl" id="shClose">Close ✕</button></div>
-      <h3 id="shTitle"></h3>
-    </div>
-    <div class="sh-body" id="shBody"></div>
-  </div>
-</dialog>
 
 <dialog id="cmdk" class="cmdk" aria-label="Command menu">
   <div class="cmdk-panel">
@@ -483,43 +323,6 @@ function fitAll(){
 fitAll();
 document.fonts&&document.fonts.ready.then(fitAll);
 addEventListener('resize',fitAll);
-
-/* ================= projects ================= */
-const P={
-  rpbrc:{title:'rpbrc',kick:'[ 01 ] macOS app · Swift, C++',h:'#f5a3b5',
-    lead:'A native macOS companion for Roblox players, built around BedWars. One universal app for Apple silicon and Intel on macOS 15 or newer, built without an Xcode project.',
-    stats:[['<0.011 ms','worst-case click timing error with every core busy (was 0.89 ms)'],['28','test suites run on every build'],['13','GPU-rendered backgrounds that react to music and pointer']],
-    secs:[['Engineering',[
-      '<b>Real-time input engine.</b> The click engine runs on a time-constraint thread, with optional spin-waiting through the last few hundred microseconds for tighter timing.',
-      '<b>Frame-aware hit registration.</b> Frame sync matches clicks to the game\'s frame rate so every press and release lands in separate frames.',
-      '<b>Instant replay clips</b> with ScreenCaptureKit and AVFoundation, plus a built-in video editor that shows a track\'s licence before downloading it.',
-      '<b>Custom build pipeline.</b> A build script calls swiftc and clang++ directly, compiles both architectures and runs the C++ timing suites and Swift suites.']],
-     ['Interface',[
-      'SwiftUI in black, space gray and white, with a 1.9 s boot sequence where the logo assembles as a 3D point cloud.',
-      'An audio lab for one-click spatial widening or dynamic loudness, a crosshair overlay with a cursor builder, and a server region notifier.']]],
-    stack:['Swift 6','SwiftUI','Objective-C++','C++','ScreenCaptureKit','AVFoundation','CoreGraphics','IOKit']},
-  lumora:{title:'Lumora',kick:'[ 02 ] Desktop & web · formerly Glass',h:'#8fc0cc',
-    lead:'A family of apps that share one visual language, built across four stacks. Each piece has its own test suite.',
-    stats:[['156','passing tests in Lumora Tweaks (macOS)'],['14 / 14','tests passing in the Tauri client'],['15 / 15','Electron self-test checks']],
-    secs:[['The apps',[
-      '<b>Lumora Tweaks</b>: a macOS tuning app in SwiftUI with a C core target and a latency lab. A Windows port is written in .NET 8 WPF.',
-      '<b>Lumora Start</b>: a SwiftUI launcher, built with SwiftPM.',
-      '<b>Lumora Client</b>: a macOS-first Minecraft launcher in Tauri 2 and Rust, with Modrinth and CurseForge browsing.',
-      '<b>Lumora Launcher</b>: an Electron launcher for the Fabric mod with a sandboxed renderer and end-to-end JVM launch tests.',
-      '<b>Web</b>: a React 19 and Convex storefront with auth, plus a zero-dependency Node sign-in server.']],
-     ['In progress',['<b>Novera VM</b>: a macOS virtual machine host built on Apple\'s Virtualization framework, with a local web interface.']]],
-    stack:['Swift','C','Rust','Tauri 2','Electron','TypeScript','React 19','Convex','.NET 8'],
-    note:'Lumora is the new name for the Glass family. Some repositories still use the old name.'},
-  roblox:{title:'Roblox',kick:'[ 03 ] Games · Luau',h:'#c4de5a',
-    lead:'Games, generators and Studio tooling on Roblox, synced from real source files with Rojo.',
-    stats:[['4','projects across games and tooling'],['Rojo','file-based workflow with version control'],['Beta','Cinderfall, in active development']],
-    secs:[['Projects',[
-      '<b>Cinderfall</b>: a game in beta. The map and interface are still being built.',
-      '<b>Troll Titans</b>: a Rojo and Luau project with a Python helper for development.',
-      '<b>BloxBot</b>: Python generators that write Roblox place files, with a Luau setup script.',
-      '<b>Ropilot</b>: a Roblox Studio plugin in Luau, with assets made in Blender.']]],
-    stack:['Luau','Rojo','Python','Blender','Roblox Studio']}
-};
 
 /* ================= intro ================= */
 const intro=$('#intro');let introDone=false;
@@ -621,74 +424,25 @@ function go(id){const t=document.getElementById(id);if(!t)return;
 
 /* ================= reveals + counters ================= */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('in');io.unobserve(t);
-  const c=t.querySelector('[data-count]');if(c)count(c)}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+}),{threshold:.15,rootMargin:'0px 0px -6% 0px'});
 $$('.rv').forEach(el=>{const sib=[...el.parentElement.children].filter(x=>x.classList.contains('rv')).indexOf(el);el.style.transitionDelay=Math.max(0,sib)*80+'ms';io.observe(el)});
 $$('.fit .ln').filter(ln=>!ln.closest('.hero,.intro')).forEach(ln=>{const i=[...ln.parentElement.children].indexOf(ln);ln.firstElementChild.style.transitionDelay=i*.1+'s';io.observe(ln)});
 $$('.hero .ln>span').forEach((s,i)=>s.style.transitionDelay=(.15+i*.1)+'s');
-function count(el){
-  const to=parseFloat(el.dataset.count),dec=+el.dataset.dec||0;
-  if(RM){el.textContent=to.toFixed(dec);return}
-  const t0=performance.now(),D=1600;
-  const f=now=>{const p=clamp((now-t0)/D),e=1-Math.pow(1-p,4);
-    el.textContent=dec?(0.89-(0.89-to)*e).toFixed(dec):Math.round(to*e);
-    if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f);
-}
 const tech=['Swift','SwiftUI','Rust','Tauri','C++','Objective-C++','TypeScript','React','Three.js','Electron','Convex','Luau','Rojo','.NET','Python','Blender','ScreenCaptureKit','Virtualization'];
 $('#track').innerHTML=[...tech,...tech].map(t=>`<span>${t}</span>`).join('');
 if(!RM)setInterval(()=>$$('[data-flip]').forEach(t=>{if(Math.random()<.5)t.classList.toggle('on')}),2200);
 
-/* card tilt */
-if(FINE&&!RM)$$('.card').forEach(c=>{
-  c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;
-    c.style.transition='transform .25s var(--ease),opacity .9s ease';
-    c.style.transform=`rotateX(${(.5-py)*5}deg) rotateY(${(px-.5)*6}deg) translateY(-4px)`});
-  c.addEventListener('pointerleave',()=>{c.style.transition='';c.style.transform=''});
-});
-
-/* ================= project sheet ================= */
-const sheet=$('#sheet'),panel=$('#sheetPanel');let lastCard=null;
-function openSheet(k,from){
-  const p=P[k];if(!p)return;lastCard=from||null;
-  panel.style.setProperty('--h',p.h);
-  $('#shKick').textContent=p.kick;$('#shTitle').textContent=p.title;
-  $('#shBody').innerHTML=`<p class="sh-lead">${p.lead}</p>
-    <div class="sh-grid">${p.stats.map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join('')}</div>
-    ${p.secs.map(([h,items])=>`<div class="sh-sec"><h4 class="lbl">${h}</h4><ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('')}
-    <div class="sh-sec"><h4 class="lbl">Stack</h4><div class="tags">${p.stack.map(s=>`<span class="tag lbl">${s}</span>`).join('')}</div></div>
-    ${p.note?`<p class="sh-note">${p.note}</p>`:''}`;
-  panel.scrollTop=0;sheet.showModal();document.body.classList.add('locked');
-  requestAnimationFrame(()=>sheet.classList.add('show'));
-  if(RM)return;
-  const r=from?from.getBoundingClientRect():null,pr=panel.getBoundingClientRect();
-  const kf=r?[{transform:`translate(${r.left+r.width/2-(pr.left+pr.width/2)}px,${r.top+r.height/2-(pr.top+pr.height/2)}px) scale(${r.width/pr.width},${Math.min(1,r.height/pr.height)})`,opacity:.3},{transform:'none',opacity:1}]
-    :[{transform:'translateY(20px) scale(.97)',opacity:0},{transform:'none',opacity:1}];
-  panel.animate(kf,{duration:620,easing:'cubic-bezier(.2,.9,.25,1)'});
-  $$('.sh-band>*,.sh-body',panel).forEach((el,i)=>el.animate([{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{duration:500,delay:160+i*70,easing:'cubic-bezier(.2,.8,.2,1)',fill:'backwards'}));
-}
-function closeSheet(){
-  if(!sheet.open)return;sheet.classList.remove('show');
-  const done=()=>{sheet.close();document.body.classList.remove('locked');lastCard&&lastCard.focus({preventScroll:true})};
-  if(RM)return done();
-  panel.animate([{transform:'none',opacity:1},{transform:'translateY(24px) scale(.97)',opacity:0}],{duration:300,easing:'cubic-bezier(.4,0,.6,1)'}).onfinish=done;
-}
-$$('.card').forEach(c=>c.addEventListener('click',()=>openSheet(c.dataset.k,c)));
-$('#shClose').addEventListener('click',closeSheet);
-sheet.addEventListener('cancel',e=>{e.preventDefault();closeSheet()});
-sheet.addEventListener('click',e=>{if(e.target===sheet)closeSheet()});
-
 /* ================= command menu ================= */
 const cmdk=$('#cmdk'),cin=$('#cmdIn'),clist=$('#cmdList');
 const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),1800)};
-const proj=k=>()=>{go('work');setTimeout(()=>openSheet(k,$(`[data-k=${k}]`)),RM?0:600)};
 const CMDS=[
-  {l:'Selected work',g:'Section',r:()=>go('work')},{l:'About',g:'Section',r:()=>go('about')},
+  {l:'About',g:'Section',r:()=>go('about')},
   {l:'Practice',g:'Section',r:()=>go('practice')},{l:'Contact',g:'Section',r:()=>go('contact')},
-  {l:'rpbrc',g:'Project',r:proj('rpbrc')},{l:'Lumora',g:'Project',r:proj('lumora')},{l:'Roblox worlds',g:'Project',r:proj('roblox')},
   {l:'Open GitHub',g:'Link',r:()=>open('https://github.com/ryuzrx','_blank','noopener')},
   {l:'Copy page link',g:'Action',r:()=>{navigator.clipboard?.writeText(location.origin+location.pathname).then(()=>toast('Link copied'),()=>toast('Could not copy'))}},
   {l:'Back to top',g:'Action',r:()=>go('top')}
 ];
-if(EMAIL)CMDS.splice(8,0,{l:'Copy email',g:'Action',r:()=>{navigator.clipboard?.writeText(EMAIL).then(()=>toast('Email copied'))}});
+if(EMAIL)CMDS.splice(5,0,{l:'Copy email',g:'Action',r:()=>{navigator.clipboard?.writeText(EMAIL).then(()=>toast('Email copied'))}});
 let sel=0,shown=CMDS;
 function renderCmd(){
   const q=cin.value.trim().toLowerCase();
@@ -698,7 +452,7 @@ function renderCmd(){
   cin.setAttribute('aria-activedescendant',shown.length?'c'+sel:'');
   const s=clist.children[sel];s&&s.scrollIntoView&&s.scrollIntoView({block:'nearest'});
 }
-function openCmd(){if(cmdk.open)return;if(sheet.open)closeSheet();cin.value='';sel=0;renderCmd();cmdk.showModal();cin.focus()}
+function openCmd(){if(cmdk.open)return;cin.value='';sel=0;renderCmd();cmdk.showModal();cin.focus()}
 function runCmd(i){const c=shown[i];if(!c)return;cmdk.close();c.r()}
 $$('.cmd-open').forEach(b=>b.addEventListener('click',openCmd));
 cin.addEventListener('input',()=>{sel=0;renderCmd()});
@@ -712,7 +466,7 @@ clist.addEventListener('pointermove',e=>{const li=e.target.closest('li');if(li&&
 cmdk.addEventListener('click',e=>{if(e.target===cmdk)cmdk.close()});
 addEventListener('keydown',e=>{
   if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();cmdk.open?cmdk.close():openCmd()}
-  else if(e.key==='/'&&!cmdk.open&&!sheet.open&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();openCmd()}
+  else if(e.key==='/'&&!cmdk.open&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();openCmd()}
 });
 if(EMAIL){const a=document.createElement('a');a.className='btn ghost lbl';a.href='mailto:'+EMAIL;a.textContent=EMAIL;$('#contactCta').append(a)}
 })();
