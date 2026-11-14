@@ -221,7 +221,7 @@ dialog[open].show::backdrop{opacity:1}
 <main id="top">
   <section class="panel hero" id="hero" aria-label="Intro">
     <div class="bar in-pad lbl">
-      <nav aria-label="Sections"><a href="#about">About</a><a href="#practice">Practice</a><a href="#contact">Contact</a></nav>
+      <nav aria-label="Sections"><a href="#about">About</a><a href="#what-i-do">What I do</a><a href="#contact">Contact</a></nav>
       <span class="mid">Ray / Software</span>
       <div class="r"><button class="cmd-open" aria-label="Open command menu">[ Menu <span class="kh">⌘K</span> ]</button><span>[ 001 ]</span></div>
     </div>
@@ -261,8 +261,8 @@ dialog[open].show::backdrop{opacity:1}
     </div>
   </section>
 
-  <section class="practice" id="practice" aria-labelledby="pr-h">
-    <div class="sec-head lbl"><span id="pr-h">[ 02 ] Practice</span><span>What I work on</span></div>
+  <section class="practice" id="what-i-do" aria-labelledby="pr-h">
+    <div class="sec-head lbl"><span id="pr-h">[ 02 ] What I do</span><span>Design &amp; engineering</span></div>
     <div class="rows">
       <div class="row rv" style="--c:var(--sakura)"><span class="lbl">3.1</span><h3>Mac apps</h3><p>Native utilities and launchers that feel at home on macOS, down to signing and universal builds.</p><span class="st lbl">Swift · SwiftUI · C++</span></div>
       <div class="row rv" style="--c:var(--teal)"><span class="lbl">3.2</span><h3>Desktop &amp; web</h3><p>Cross-platform tools and websites, with motion and 3D where it helps.</p><span class="st lbl">Rust · Tauri · React</span></div>
@@ -275,9 +275,10 @@ dialog[open].show::backdrop{opacity:1}
     <div class="bar in-pad lbl" style="grid-template-columns:1fr 1fr"><span>[ 03 ] Contact</span><span style="text-align:right">Open to roles &amp; collaborations</span></div>
     <div class="mid">
       <h2 class="disp fit c" id="ct-h"><span class="ln"><span>Let's build</span></span><span class="ln"><span>something</span></span></h2>
-      <p class="rv">Open to internships, roles and interesting collaborations. The fastest way to reach me is GitHub.</p>
+      <p class="rv">Open to internships, roles and interesting collaborations. The fastest way to reach me is email.</p>
       <div class="btns rv" id="contactCta">
-        <a class="btn lbl" href="https://github.com/ryuzrx" target="_blank" rel="noopener">github.com/ryuzrx <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l6-6M5 4h5v5"/></svg></a>
+        <a class="btn lbl" href="mailto:ray@rpbrc.pro">ray@rpbrc.pro <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l6-6M5 4h5v5"/></svg></a>
+        <a class="btn ghost lbl" href="https://github.com/ryuzrx" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l6-6M5 4h5v5"/></svg></a>
       </div>
     </div>
     <footer class="foot in-pad lbl">
@@ -301,7 +302,7 @@ dialog[open].show::backdrop{opacity:1}
 (()=>{
 'use strict';
 /* Set this once you have a public address; leave empty to hide the email button. */
-const EMAIL='';
+const EMAIL='ray@rpbrc.pro';
 
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -437,7 +438,7 @@ const cmdk=$('#cmdk'),cin=$('#cmdIn'),clist=$('#cmdList');
 const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),1800)};
 const CMDS=[
   {l:'About',g:'Section',r:()=>go('about')},
-  {l:'Practice',g:'Section',r:()=>go('practice')},{l:'Contact',g:'Section',r:()=>go('contact')},
+  {l:'What I do',g:'Section',r:()=>go('what-i-do')},{l:'Contact',g:'Section',r:()=>go('contact')},
   {l:'Open GitHub',g:'Link',r:()=>open('https://github.com/ryuzrx','_blank','noopener')},
   {l:'Copy page link',g:'Action',r:()=>{navigator.clipboard?.writeText(location.origin+location.pathname).then(()=>toast('Link copied'),()=>toast('Could not copy'))}},
   {l:'Back to top',g:'Action',r:()=>go('top')}
@@ -468,7 +469,6 @@ addEventListener('keydown',e=>{
   if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();cmdk.open?cmdk.close():openCmd()}
   else if(e.key==='/'&&!cmdk.open&&!/INPUT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();openCmd()}
 });
-if(EMAIL){const a=document.createElement('a');a.className='btn ghost lbl';a.href='mailto:'+EMAIL;a.textContent=EMAIL;$('#contactCta').append(a)}
 })();
 </script>
 
